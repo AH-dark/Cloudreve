@@ -3,6 +3,7 @@ package auth
 import (
 	"database/sql"
 	"fmt"
+	"gorm.io/driver/mysql"
 	"testing"
 	"time"
 
@@ -11,8 +12,8 @@ import (
 	"github.com/cloudreve/Cloudreve/v3/pkg/conf"
 	"github.com/cloudreve/Cloudreve/v3/pkg/util"
 	"github.com/gin-gonic/gin"
-	"github.com/jinzhu/gorm"
 	"github.com/stretchr/testify/assert"
+	"gorm.io/gorm"
 )
 
 var mock sqlmock.Sqlmock
@@ -29,7 +30,11 @@ func TestMain(m *testing.M) {
 		panic("An error was not expected when opening a stub database connection")
 	}
 
-	mockDB, _ := gorm.Open("mysql", db)
+	mockDB, _ := gorm.Open(mysql.New(mysql.Config{
+		DSN:        "sqlmock_db_0",
+		DriverName: "mysql",
+		Conn:       db,
+	}))
 	model.DB = mockDB
 	defer db.Close()
 

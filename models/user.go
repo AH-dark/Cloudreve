@@ -9,8 +9,8 @@ import (
 	"strings"
 
 	"github.com/cloudreve/Cloudreve/v3/pkg/util"
-	"github.com/jinzhu/gorm"
 	"github.com/pkg/errors"
+	"gorm.io/gorm"
 )
 
 const (

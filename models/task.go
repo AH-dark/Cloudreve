@@ -2,7 +2,7 @@ package model
 
 import (
 	"github.com/cloudreve/Cloudreve/v3/pkg/util"
-	"github.com/jinzhu/gorm"
+	"gorm.io/gorm"
 )
 
 // Task 任务模型
@@ -55,10 +55,10 @@ func GetTasksByID(id interface{}) (*Task, error) {
 }
 
 // ListTasks 列出用户所属的任务
-func ListTasks(uid uint, page, pageSize int, order string) ([]Task, int) {
+func ListTasks(uid uint, page, pageSize int, order string) ([]Task, int64) {
 	var (
 		tasks []Task
-		total int
+		total int64
 	)
 	dbChain := DB
 	dbChain = dbChain.Where("user_id = ?", uid)

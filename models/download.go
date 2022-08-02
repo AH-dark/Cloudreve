@@ -5,7 +5,7 @@ import (
 
 	"github.com/cloudreve/Cloudreve/v3/pkg/aria2/rpc"
 	"github.com/cloudreve/Cloudreve/v3/pkg/util"
-	"github.com/jinzhu/gorm"
+	"gorm.io/gorm"
 )
 
 // Download 离线下载队列模型
@@ -88,7 +88,8 @@ func GetDownloadsByStatusAndUser(page, uid uint, status ...int) []Download {
 	var tasks []Download
 	dbChain := DB
 	if page > 0 {
-		dbChain = dbChain.Limit(10).Offset((page - 1) * 10).Order("updated_at DESC")
+		// TODO: 不安全的分页方法，较大的数据量易导致数据库卡死，不应使用 Offset 进行分页。
+		dbChain = dbChain.Limit(10).Offset(int((page - 1) * 10)).Order("updated_at DESC")
 	}
 	dbChain.Where("user_id = ? and status in (?)", uid, status).Find(&tasks)
 	return tasks

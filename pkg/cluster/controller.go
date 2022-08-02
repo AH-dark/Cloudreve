@@ -11,7 +11,7 @@ import (
 	"github.com/cloudreve/Cloudreve/v3/pkg/mq"
 	"github.com/cloudreve/Cloudreve/v3/pkg/request"
 	"github.com/cloudreve/Cloudreve/v3/pkg/serializer"
-	"github.com/jinzhu/gorm"
+	"gorm.io/gorm"
 	"net/url"
 	"sync"
 )

@@ -8,7 +8,7 @@ import (
 	"time"
 
 	"github.com/cloudreve/Cloudreve/v3/pkg/util"
-	"github.com/jinzhu/gorm"
+	"gorm.io/gorm"
 )
 
 // File 文件

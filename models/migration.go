@@ -2,13 +2,14 @@ package model
 
 import (
 	"context"
+	"errors"
 	"github.com/cloudreve/Cloudreve/v3/models/scripts/invoker"
 	"github.com/cloudreve/Cloudreve/v3/pkg/cache"
 	"github.com/cloudreve/Cloudreve/v3/pkg/conf"
 	"github.com/cloudreve/Cloudreve/v3/pkg/util"
 	"github.com/fatih/color"
 	"github.com/hashicorp/go-version"
-	"github.com/jinzhu/gorm"
+	"gorm.io/gorm"
 	"sort"
 	"strings"
 )
@@ -68,7 +69,7 @@ func migration() {
 func addDefaultPolicy() {
 	_, err := GetPolicyByID(uint(1))
 	// 未找到初始存储策略时，则创建
-	if gorm.IsRecordNotFoundError(err) {
+	if errors.Is(err, gorm.ErrRecordNotFound) {
 		defaultPolicy := Policy{
 			Name:               "默认存储策略",
 			Type:               "local",
@@ -96,7 +97,7 @@ func addDefaultSettings() {
 func addDefaultGroups() {
 	_, err := GetGroupByID(1)
 	// 未找到初始管理组时，则创建
-	if gorm.IsRecordNotFoundError(err) {
+	if errors.Is(err, gorm.ErrRecordNotFound) {
 		defaultAdminGroup := Group{
 			Name:          "管理员",
 			PolicyList:    []uint{1},
@@ -120,7 +121,7 @@ func addDefaultGroups() {
 	err = nil
 	_, err = GetGroupByID(2)
 	// 未找到初始注册会员时，则创建
-	if gorm.IsRecordNotFoundError(err) {
+	if errors.Is(err, gorm.ErrRecordNotFound) {
 		defaultAdminGroup := Group{
 			Name:          "注册会员",
 			PolicyList:    []uint{1},
@@ -141,7 +142,7 @@ func addDefaultGroups() {
 	err = nil
 	_, err = GetGroupByID(3)
 	// 未找到初始游客用户组时，则创建
-	if gorm.IsRecordNotFoundError(err) {
+	if errors.Is(err, gorm.ErrRecordNotFound) {
 		defaultAdminGroup := Group{
 			Name:       "游客",
 			PolicyList: []uint{},
@@ -161,7 +162,7 @@ func addDefaultUser() {
 	password := util.RandStringRunes(8)
 
 	// 未找到初始用户时，则创建
-	if gorm.IsRecordNotFoundError(err) {
+	if errors.Is(err, gorm.ErrRecordNotFound) {
 		defaultUser := NewUser()
 		defaultUser.Email = "admin@cloudreve.org"
 		defaultUser.Nick = "admin"
@@ -184,7 +185,7 @@ func addDefaultUser() {
 func addDefaultNode() {
 	_, err := GetNodeByID(1)
 
-	if gorm.IsRecordNotFoundError(err) {
+	if errors.Is(err, gorm.ErrRecordNotFound) {
 		defaultAdminGroup := Node{
 			Name:   "主机（本机）",
 			Status: NodeActive,

@@ -6,7 +6,7 @@ import (
 	"time"
 
 	"github.com/cloudreve/Cloudreve/v3/pkg/util"
-	"github.com/jinzhu/gorm"
+	"gorm.io/gorm"
 )
 
 // Folder 目录
@@ -184,7 +184,7 @@ func (folder *Folder) MoveOrCopyFileTo(files []uint, dstFolder *Folder, isCopy b
 			folder.OwnerID,
 			folder.ID,
 		).
-			Update(map[string]interface{}{
+			Updates(map[string]interface{}{
 				"folder_id": dstFolder.ID,
 			}).
 			Error
@@ -288,7 +288,7 @@ func (folder *Folder) MoveFolderTo(dirs []uint, dstFolder *Folder) error {
 		dirs,
 		folder.OwnerID,
 		folder.ID,
-	).Update(map[string]interface{}{
+	).Updates(map[string]interface{}{
 		"parent_id": dstFolder.ID,
 	}).Error
 

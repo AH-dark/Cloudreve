@@ -2,12 +2,13 @@ package routers
 
 import (
 	"database/sql"
+	"gorm.io/driver/mysql"
 	"testing"
 
 	"github.com/DATA-DOG/go-sqlmock"
 	model "github.com/cloudreve/Cloudreve/v3/models"
 	"github.com/gin-gonic/gin"
-	"github.com/jinzhu/gorm"
+	"gorm.io/gorm"
 )
 
 var mock sqlmock.Sqlmock
@@ -31,7 +32,11 @@ func TestMain(m *testing.M) {
 	model.Init()
 	memDB = model.DB
 
-	mockDB, _ = gorm.Open("mysql", db)
+	mockDB, _ = gorm.Open(mysql.New(mysql.Config{
+		DSN:        "sqlmock_db_0",
+		DriverName: "mysql",
+		Conn:       db,
+	}))
 	model.DB = memDB
 	defer db.Close()
 

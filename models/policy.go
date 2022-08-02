@@ -12,7 +12,7 @@ import (
 
 	"github.com/cloudreve/Cloudreve/v3/pkg/cache"
 	"github.com/cloudreve/Cloudreve/v3/pkg/util"
-	"github.com/jinzhu/gorm"
+	"gorm.io/gorm"
 )
 
 // Policy 存储策略
@@ -235,7 +235,7 @@ func (policy *Policy) SaveAndClearCache() error {
 	return err
 }
 
-// SaveAndClearCache 更新并清理缓存
+// UpdateAccessKeyAndClearCache 更新并清理缓存
 func (policy *Policy) UpdateAccessKeyAndClearCache(s string) error {
 	err := DB.Model(policy).UpdateColumn("access_key", s).Error
 	policy.ClearCache()

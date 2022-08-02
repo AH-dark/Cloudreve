@@ -1,14 +1,15 @@
 package model
 
 import (
+	"database/sql"
 	"encoding/json"
 	"testing"
 
 	"github.com/DATA-DOG/go-sqlmock"
 	"github.com/cloudreve/Cloudreve/v3/pkg/cache"
-	"github.com/jinzhu/gorm"
 	"github.com/pkg/errors"
 	"github.com/stretchr/testify/assert"
+	"gorm.io/gorm"
 )
 
 func TestGetUserByID(t *testing.T) {
@@ -32,7 +33,7 @@ func TestGetUserByID(t *testing.T) {
 	asserts.Equal(User{
 		Model: gorm.Model{
 			ID:        1,
-			DeletedAt: nil,
+			DeletedAt: gorm.DeletedAt(sql.NullTime{}),
 		},
 		Email:   "admin@cloudreve.org",
 		Options: "{}",
@@ -84,7 +85,7 @@ func TestGetActiveUserByID(t *testing.T) {
 	asserts.Equal(User{
 		Model: gorm.Model{
 			ID:        1,
-			DeletedAt: nil,
+			DeletedAt: gorm.DeletedAt(sql.NullTime{}),
 		},
 		Email:   "admin@cloudreve.org",
 		Options: "{}",

@@ -21,7 +21,6 @@ require (
 	github.com/google/go-querystring v1.0.0
 	github.com/gorilla/websocket v1.4.2
 	github.com/hashicorp/go-version v1.3.0
-	github.com/jinzhu/gorm v1.9.16
 	github.com/juju/ratelimit v1.0.1
 	github.com/mholt/archiver/v4 v4.0.0-alpha.6
 	github.com/mojocn/base64Captcha v0.0.0-20190801020520-752b1cd608b2

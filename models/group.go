@@ -2,7 +2,7 @@ package model
 
 import (
 	"encoding/json"
-	"github.com/jinzhu/gorm"
+	"gorm.io/gorm"
 )
 
 // Group 用户组模型

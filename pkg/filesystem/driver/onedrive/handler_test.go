@@ -6,7 +6,7 @@ import (
 	"github.com/cloudreve/Cloudreve/v3/pkg/auth"
 	"github.com/cloudreve/Cloudreve/v3/pkg/mq"
 	"github.com/cloudreve/Cloudreve/v3/pkg/serializer"
-	"github.com/jinzhu/gorm"
+	"gorm.io/gorm"
 	"io"
 	"io/ioutil"
 	"net/http"

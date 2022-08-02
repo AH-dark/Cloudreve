@@ -17,9 +17,9 @@ import (
 	"testing"
 
 	model "github.com/cloudreve/Cloudreve/v3/models"
-	"github.com/jinzhu/gorm"
 	"github.com/stretchr/testify/assert"
 	testMock "github.com/stretchr/testify/mock"
+	"gorm.io/gorm"
 )
 
 func TestGenericBeforeUpload(t *testing.T) {

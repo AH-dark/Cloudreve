@@ -6,8 +6,9 @@ import (
 	"github.com/DATA-DOG/go-sqlmock"
 	model "github.com/cloudreve/Cloudreve/v3/models"
 	"github.com/cloudreve/Cloudreve/v3/pkg/balancer"
-	"github.com/jinzhu/gorm"
 	"github.com/stretchr/testify/assert"
+	"gorm.io/driver/mysql"
+	"gorm.io/gorm"
 	"testing"
 )
 
@@ -21,7 +22,11 @@ func TestMain(m *testing.M) {
 	if err != nil {
 		panic("An error was not expected when opening a stub database connection")
 	}
-	model.DB, _ = gorm.Open("mysql", db)
+	model.DB, _ = gorm.Open(mysql.New(mysql.Config{
+		DSN:        "sqlmock_db_0",
+		DriverName: "mysql",
+		Conn:       db,
+	}))
 	defer db.Close()
 	m.Run()
 }

@@ -7,8 +7,8 @@ import (
 	"testing"
 
 	model "github.com/cloudreve/Cloudreve/v3/models"
-	"github.com/jinzhu/gorm"
 	"github.com/stretchr/testify/assert"
+	"gorm.io/gorm"
 )
 
 func TestPing(t *testing.T) {

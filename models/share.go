@@ -10,7 +10,7 @@ import (
 	"github.com/cloudreve/Cloudreve/v3/pkg/hashid"
 	"github.com/cloudreve/Cloudreve/v3/pkg/util"
 	"github.com/gin-gonic/gin"
-	"github.com/jinzhu/gorm"
+	"gorm.io/gorm"
 )
 
 // Share 分享模型
@@ -197,10 +197,10 @@ func DeleteShareBySourceIDs(sources []uint, isDir bool) error {
 }
 
 // ListShares 列出UID下的分享
-func ListShares(uid uint, page, pageSize int, order string, publicOnly bool) ([]Share, int) {
+func ListShares(uid uint, page, pageSize int, order string, publicOnly bool) ([]Share, int64) {
 	var (
 		shares []Share
-		total  int
+		total  int64
 	)
 	dbChain := DB
 	dbChain = dbChain.Where("user_id = ?", uid)
@@ -217,10 +217,10 @@ func ListShares(uid uint, page, pageSize int, order string, publicOnly bool) ([]
 }
 
 // SearchShares 根据关键字搜索分享
-func SearchShares(page, pageSize int, order, keywords string) ([]Share, int) {
+func SearchShares(page, pageSize int, order, keywords string) ([]Share, int64) {
 	var (
 		shares []Share
-		total  int
+		total  int64
 	)
 
 	keywordList := strings.Split(keywords, " ")

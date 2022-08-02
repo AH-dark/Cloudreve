@@ -5,7 +5,7 @@ import (
 	"strconv"
 
 	"github.com/cloudreve/Cloudreve/v3/pkg/cache"
-	"github.com/jinzhu/gorm"
+	"gorm.io/gorm"
 )
 
 // Setting 系统设置模型

@@ -15,7 +15,7 @@ import (
 	"github.com/cloudreve/Cloudreve/v3/pkg/task/slavetask"
 	"github.com/cloudreve/Cloudreve/v3/pkg/util"
 	"github.com/gin-gonic/gin"
-	"github.com/jinzhu/gorm"
+	"gorm.io/gorm"
 	"net/http"
 	"net/url"
 	"time"

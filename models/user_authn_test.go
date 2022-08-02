@@ -3,8 +3,8 @@ package model
 import (
 	"github.com/DATA-DOG/go-sqlmock"
 	"github.com/duo-labs/webauthn/webauthn"
-	"github.com/jinzhu/gorm"
 	"github.com/stretchr/testify/assert"
+	"gorm.io/gorm"
 	"testing"
 )
 

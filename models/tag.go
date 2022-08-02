@@ -2,7 +2,7 @@ package model
 
 import (
 	"github.com/cloudreve/Cloudreve/v3/pkg/util"
-	"github.com/jinzhu/gorm"
+	"gorm.io/gorm"
 )
 
 // Tag 用户自定义标签

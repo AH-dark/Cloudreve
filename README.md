@@ -30,7 +30,7 @@
   <a href="https://cloudreve.org">Homepage</a> •
   <a href="https://demo.cloudreve.org">Demo</a> •
   <a href="https://forum.cloudreve.org/">Discussion</a> •
-  <a href="https://docs.cloudreve.org/v/en/">Documents</a> •
+  <a href="https://docs.cloudreve.org/en/">Documents</a> •
   <a href="https://github.com/cloudreve/Cloudreve/releases">Download</a> •
   <a href="https://t.me/cloudreve_official">Telegram Group</a> •
   <a href="#scroll-License">License</a>
